@@ -1,10 +1,6 @@
 import "bootstrap";
 import "./style.css";
 
-
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
 window.onload = function () {
   const productos = [
     { nombre: 'Mouse', precio: 25 },
@@ -27,6 +23,8 @@ window.onload = function () {
       </div>
     </div>
     `
+
+    container.append(div)
   })
 
 };
