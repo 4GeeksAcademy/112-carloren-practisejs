@@ -6,22 +6,30 @@ import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 window.onload = function () {
-  const devices = ["teclado", "mouse", "webcam", "auriculares"]
+  const devices = [
+    { nombre: 'Teclado', tipo: 'Entrada', disponible: true },
+    { nombre: 'Mouse', tipo: 'Entrada', disponible: true },
+    { nombre: 'Monitor', tipo: 'Entrada', disponible: true },
+    { nombre: 'WebCam', tipo: 'Entrada', disponible: false },
+  ]
 
-  console.log(devices);
+  const lista = document.getElementById('device-list')
 
-  const lista = document.getElementById("items-list")
-
-  const elementos = devices.map(device => {
-
+  devices.map(device => {
     const li = document.createElement('li')
-    li.textContent = device
+
+    li.innerHTML = `
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <strong>${device.nombre}</strong>
+        <span class="text-muted">(${device.tipo})<span>
+      </div>
+      <div class="badge bg-${device.disponible ? 'success' : 'danger'}">
+        ${device.disponible ? 'Disponible' : 'No disponible'}
+      </div>
+    </div>
+    `
     li.classList.add('list-group-item')
-    lista.append(li) //append inserta texto o elementos en el elemento HTML guardado en la variable, en este caso el ul
-
-    //return li
+    lista.append(li)
   })
-  // con spread operator (...) tendriamos que tener return en la funcion
-  //lista.append(...elementos)
-
 };
